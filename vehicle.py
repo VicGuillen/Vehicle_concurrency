@@ -63,7 +63,9 @@ class Vehicle:
         self.labelframe_lum=ttk.LabelFrame(self.ventana1,text="Environment Light")
         self.labelframe_lum.grid(column=0, row=2, padx=5, pady=10, sticky = "WE")        
         
-        
+        self.scale = tk.Scale(self.labelframe_lum, from_=0, to=100,resolution=10, length=665, orient=tk.HORIZONTAL, command=self.update_label_lum)
+        self.scale.grid(column=0, row=1, sticky='we')
+
 
         # añadir barra progreso combustible
 
@@ -72,7 +74,11 @@ class Vehicle:
 
         self.ventana1.protocol("WM_DELETE_WINDOW", self.on_closing)
         self.ventana1.mainloop()
-        
+    
+
+    def update_label_lum(self,event):
+        self.label1.configure(text = str(self.scale.get()))
+
 
     def on_closing(self):
         self.ventana1.destroy()
