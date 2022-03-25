@@ -37,7 +37,7 @@ class Vehicle:
         self.light_rear_polygon=self.canvas1.create_polygon(50,144,85,135,86,127,49,129,stipple="gray50", fill="red", state='hidden')        
 
         self.redlight_polygon = [ self.canvas1.create_polygon(452,202,464,202,468,198,456,198,fill="red", state='hidden'), \
-            self.canvas1.create_polygon(458,197,469,197,473,42,463,42,fill="red", state='hidden'), 
+            self.canvas1.create_polygon(458,197,469,197,473,192,463,192,fill="red", state='hidden'), 
             self.canvas1.create_polygon(463,191,472,191,475,188,467,188,fill="red", state='hidden'), 
             self.canvas1.create_polygon(468,187,475,187,478,183,472,183,fill="red", state='hidden'), 
             self.canvas1.create_polygon(472,183,478,183,480,181,474,181,fill="red", state='hidden') ]
@@ -69,6 +69,13 @@ class Vehicle:
 
 
         # añadir barra progreso combustible
+        self.labelframe_fuel=ttk.LabelFrame(self.ventana1,text="Fuel Level")
+        self.labelframe_fuel.grid(column=0, row=3, padx=5, pady=10, sticky = "WE") 
+    
+        self.progress = ttk.Progressbar(self.labelframe_fuel, orient = HORIZONTAL, length = 665, mode = 'determinate') 
+        self.progress.pack(pady=10)
+        
+
 
         self.ventana1.after(500,self.do_work)
         self.ventana1.bind("<KeyPress>", self.action)
@@ -195,6 +202,8 @@ class Vehicle:
 
 
         self.label_engine.config(text=str(self.engine))
+        self.progress['value'] =int(self.fuel.get_porcentage_level())
+        
         #self.scale.config(self.env.get_lum())
 
 
