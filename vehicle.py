@@ -85,7 +85,7 @@ class Vehicle:
     
 
     def update_scale_lum(self,event):
-        
+
         self.environment.set_lum(self.scale.get())
 
 
@@ -117,8 +117,8 @@ class Vehicle:
                 self.redlight.activate()
         if evento.keysym=='v':
                 self.redlight.deactivate()
-        #if evento.keysym=='g':
-        #        self.fuel.reload()
+        if evento.keysym=='g':
+                self.fuel.reload()
 
 
     def draw_background(self):       
